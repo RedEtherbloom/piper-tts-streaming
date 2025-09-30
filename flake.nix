@@ -17,18 +17,15 @@
 
       perSystem = {
         pkgs,
-        self',
         ...
       }: {
         packages = rec {
-          piper-tts-streaming = pkgs.buildGoModule (finalAttrs: {
+          piper-tts-streaming = pkgs.buildGoModule {
             pname = "piper-tts-streaming";
-            # TODO: Can this be automatically pulled from the go files?
-            version = "0.0.1";
+            version = "0.0.2";
 
-            # TODO: Fill in correct folder
-            src = ./src;
-            vendorHash = null;
+            src = ./.;
+            vendorHash = "sha256-39n1qCvAeQJeYmGPII8/D3xprRYFTM2Epg3JWzu1hZQ=";
             meta = {
               description = "Publish a REST API to keep piper loaded in-between invocations.";
               homepage = "https://github.com/RedEtherbloom/piper-tts-streaming";
@@ -42,7 +39,7 @@
                 }
               ];
             };
-          });
+          };
           default = piper-tts-streaming;
         };
       };
